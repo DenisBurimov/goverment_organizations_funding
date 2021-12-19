@@ -34,6 +34,16 @@ def headings():
 
         df.to_excel('agencies.xlsx')
 
+def links_to_pdfs(item):
+    links = browser_lib.find_elements("tag:a", parent=item)
+    links_with_pdf_to_download = []
+    for link in links:
+        link_href = browser_lib.get_element_attribute(link, "href")
+        if link_href and item.text in link_href:
+            links_with_pdf_to_download.append(link_href)
+
+    return links_with_pdf_to_download
+
 
 def specific_agency():
     browser_lib.click_element("class:tuck-7")
@@ -53,20 +63,26 @@ def specific_agency():
 
     table_data = []
 
-    table_page = browser_lib.find_elements("tag:tr")
+    table_page = browser_lib.find_elements("tag:td")
+    links_to_download = []
+
     for item in table_page:
         table_data.append(item.text)
+        new_links_to_download = links_to_pdfs(item)
+        links_to_download.extend(new_links_to_download)
 
-    # While next button doesn't have attribute disabled
+
     next_button = browser_lib.find_element("class:next")
     next_button_attributes = browser_lib.get_element_attribute(next_button, "class")
     browser_lib.click_element("class:next")
     time.sleep(15)
 
     while True:
-        table_page = browser_lib.find_elements("tag:tr")
+        table_page = browser_lib.find_elements("tag:td")
         for item in table_page:
             table_data.append(item.text)
+            new_links_to_download = links_to_pdfs(item)
+            links_to_download.extend(new_links_to_download)
 
         if "disabled" in next_button_attributes:
             break
@@ -75,18 +91,31 @@ def specific_agency():
         time.sleep(15)
         next_button = browser_lib.find_element("class:next")
         next_button_attributes = browser_lib.get_element_attribute(next_button, "class")
-        print(next_button_attributes)
 
-    individual_investments = []
+    individual_investments_splited_cells = []
     for item in table_data:
         if len(item):
-            print(item)
-            individual_investments.append(item)
+            individual_investments_splited_cells.append(item)
 
+    individual_investments = [individual_investments_splited_cells[i: i + 7] for i in range(0, len(individual_investments_splited_cells), 7)]
+    df = pd.DataFrame({
+        "UII": [x[0] for x in individual_investments],
+        "Bureau": [x[1] for x in individual_investments],
+        "Investment Title": [x[2] for x in individual_investments],
+        "Total FY2021 Spending ($M)": [x[3] for x in individual_investments],
+        "Type": [x[4] for x in individual_investments],
+        "CIO Rating": [x[5] for x in individual_investments],
+        "# of Projects": [x[6] for x in individual_investments],
+    })
 
-def store_screenshot(filename):
-    browser_lib.screenshot(filename=filename)
+    df.to_excel('individual_investments.xlsx')
 
+    return links_to_download
+
+def perform_downloads(links_passed):
+    for link in links_passed:
+        browser_lib.open_available_browser(link)
+        browser_lib.download_preferences
 
 # Define a main() function that calls the other functions in order:
 def main():
@@ -94,7 +123,6 @@ def main():
         open_the_website("https://itdashboard.gov/")
         # headings()
         specific_agency()
-        store_screenshot("output/current_state_of_business.png")
     finally:
         browser_lib.close_all_browsers()
 
