@@ -112,10 +112,6 @@ def specific_agency():
 
     return links_to_download
 
-def perform_downloads(links_passed):
-    for link in links_passed:
-        browser_lib.open_available_browser(link)
-        browser_lib.download_preferences
 
 # Define a main() function that calls the other functions in order:
 def main():
