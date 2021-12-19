@@ -1,0 +1,33 @@
+UII Bureau Investment Title Total FY2021 Spending ($M) Type CIO Rating # of Projects
+422-000001328 National Science Foundation Mission Support Systems $50.306 Major IT 2 26
+422-000000004 National Science Foundation Data Management and Delivery $8.330 Major IT 3 5
+422-000001327 National Science Foundation iTRAK $8.671 Major IT 2 10
+422-000001363 National Science Foundation Financial Services Support $2.612 Non-major IT -- --
+422-000000003 National Science Foundation Administrative Applications $2.953 Non-major IT -- --
+422-000000026 National Science Foundation Human Resources Support System $2.450 Non-major IT -- --
+422-999990230 National Science Foundation Integrated Acquisition Environment $0.720 Funding Transfer -- --
+422-999991218 National Science Foundation USAJOBS $0.010 Funding Transfer -- --
+422-999993400 National Science Foundation LOB: Hiring Assessment $0.000 Funding Transfer -- --
+422-999990160 National Science Foundation Grants.gov $0.323 Funding Transfer -- --
+UII Bureau Investment Title Total FY2021 Spending ($M) Type CIO Rating # of Projects
+422-000001328 National Science Foundation Mission Support Systems $50.306 Major IT 2 26
+422-000000004 National Science Foundation Data Management and Delivery $8.330 Major IT 3 5
+422-000001327 National Science Foundation iTRAK $8.671 Major IT 2 10
+422-000001363 National Science Foundation Financial Services Support $2.612 Non-major IT -- --
+422-000000003 National Science Foundation Administrative Applications $2.953 Non-major IT -- --
+422-000000026 National Science Foundation Human Resources Support System $2.450 Non-major IT -- --
+422-999990230 National Science Foundation Integrated Acquisition Environment $0.720 Funding Transfer -- --
+422-999991218 National Science Foundation USAJOBS $0.010 Funding Transfer -- --
+422-999993400 National Science Foundation LOB: Hiring Assessment $0.000 Funding Transfer -- --
+422-999990160 National Science Foundation Grants.gov $0.323 Funding Transfer -- --
+UII Bureau Investment Title Total FY2021 Spending ($M) Type CIO Rating # of Projects
+422-999991200 National Science Foundation LOB: Human Resource Management $0.068 Funding Transfer -- --
+422-999991218 National Science Foundation USAJOBS $0.010 Funding Transfer -- --
+422-999993100 National Science Foundation LOB: Geospatial $0.025 Funding Transfer -- --
+422-999993200 National Science Foundation LOB: Budget Formulation $0.120 Funding Transfer -- --
+422-999993400 National Science Foundation LOB: Hiring Assessment $0.000 Funding Transfer -- --
+422-000000016 National Science Foundation IT Security and Privacy Initiatives $8.877 Standard IT Infrastructure 2 --
+422-000001362 National Science Foundation IT Management $5.433 Standard IT Infrastructure 3 --
+422-000001364 National Science Foundation Network $10.949 Standard IT Infrastructure 3 1
+422-000001365 National Science Foundation Data Center and Cloud $7.463 Standard IT Infrastructure 2 --
+422-000001366 National Science Foundation End User $16.231 Standard IT Infrastructure 2 --
