@@ -53,7 +53,7 @@ def specific_agency():
 
     table_data = []
 
-    table_page = browser_lib.find_elements("class:datasource-table")
+    table_page = browser_lib.find_elements("tag:td")
     for item in table_page:
         table_data.append(item.text)
 
@@ -64,7 +64,7 @@ def specific_agency():
     time.sleep(15)
 
     while True:
-        table_page = browser_lib.find_elements("class:datasource-table")
+        table_page = browser_lib.find_elements("tag:td")
         for item in table_page:
             table_data.append(item.text)
 
@@ -75,13 +75,24 @@ def specific_agency():
         time.sleep(15)
         next_button = browser_lib.find_element("class:next")
         next_button_attributes = browser_lib.get_element_attribute(next_button, "class")
-        print(next_button_attributes)
 
-
-    individual_investments = []
+    individual_investments_splited_cells = []
     for item in table_data:
-        print(type(item), len(item), item)
+        if len(item):
+            individual_investments_splited_cells.append(item)
 
+    individual_investments = [individual_investments_splited_cells[i: i + 7] for i in range(0, len(individual_investments_splited_cells), 7)]
+    df = pd.DataFrame({
+        "UII": [x[0] for x in individual_investments],
+        "Bureau": [x[1] for x in individual_investments],
+        "Investment Title": [x[2] for x in individual_investments],
+        "Total FY2021 Spending ($M)": [x[3] for x in individual_investments],
+        "Type": [x[4] for x in individual_investments],
+        "CIO Rating": [x[5] for x in individual_investments],
+        "# of Projects": [x[6] for x in individual_investments],
+    })
+
+    df.to_excel('individual_investments.xlsx')
 
 def store_screenshot(filename):
     browser_lib.screenshot(filename=filename)

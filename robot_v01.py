@@ -53,7 +53,7 @@ def specific_agency():
 
     table_data = []
 
-    table_page = browser_lib.find_elements("class:datasource-table")
+    table_page = browser_lib.find_elements("tag:tr")
     for item in table_page:
         table_data.append(item.text)
 
@@ -64,7 +64,7 @@ def specific_agency():
     time.sleep(15)
 
     while True:
-        table_page = browser_lib.find_elements("class:datasource-table")
+        table_page = browser_lib.find_elements("tag:tr")
         for item in table_page:
             table_data.append(item.text)
 
@@ -77,10 +77,11 @@ def specific_agency():
         next_button_attributes = browser_lib.get_element_attribute(next_button, "class")
         print(next_button_attributes)
 
-
     individual_investments = []
     for item in table_data:
-        print(type(item), len(item), item)
+        if len(item):
+            print(item)
+            individual_investments.append(item)
 
 
 def store_screenshot(filename):
